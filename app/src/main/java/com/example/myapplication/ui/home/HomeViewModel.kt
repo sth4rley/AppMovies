@@ -6,10 +6,32 @@ import androidx.lifecycle.ViewModel
 import com.example.myapplication.api.Movie
 
 class HomeViewModel : ViewModel() {
-    private val _movieList: MutableLiveData<List<Movie>> = MutableLiveData()
-    val movieList: LiveData<List<Movie>> get() = _movieList
+    private val _popularList: MutableLiveData<List<Movie>> = MutableLiveData()
+    val popularList: LiveData<List<Movie>> get() = _popularList
 
-    fun setMovies(movies: List<Movie>) {
-        _movieList.value = movies
+    private val _topRatedList: MutableLiveData<List<Movie>> = MutableLiveData()
+    val topRatedList: LiveData<List<Movie>> get() = _topRatedList
+
+    private val _nowPlayingList: MutableLiveData<List<Movie>> = MutableLiveData()
+    val nowPlayingList: LiveData<List<Movie>> get() = _nowPlayingList
+
+    private val _upcomingList: MutableLiveData<List<Movie>> = MutableLiveData()
+    val upcomingList: LiveData<List<Movie>> get() = _upcomingList
+
+    fun setPopularMovies(movies: List<Movie>) {
+        _popularList.value = movies
     }
+
+    fun setTopRatedMovies(movies: List<Movie>) {
+        _topRatedList.value = movies
+    }
+
+    fun setNowPlayingMovies(movies: List<Movie>) {
+        _nowPlayingList.value = movies
+    }
+
+    fun setUpcomingMovies(movies: List<Movie>) {
+        _upcomingList.value = movies
+    }
+
 }

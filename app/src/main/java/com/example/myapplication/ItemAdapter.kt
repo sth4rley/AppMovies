@@ -24,7 +24,7 @@ class ItemAdapter (private val items: List<Movie>) : RecyclerView.Adapter<ItemAd
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         Glide.with(holder.itemView.context)
             .load("https://image.tmdb.org/t/p/w342/" + items[position].poster_path)
-            .placeholder(R.drawable.ic_launcher_foreground)  // Imagem de placeholder enquanto a imagem está sendo carregada
+            .placeholder(R.drawable.loading)  // Imagem de placeholder enquanto a imagem está sendo carregada
             .into(holder.moviePoster)
     }
 
