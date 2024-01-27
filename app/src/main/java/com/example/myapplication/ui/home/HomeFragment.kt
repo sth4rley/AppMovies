@@ -49,29 +49,29 @@ class HomeFragment : Fragment() {
         }
         // caso contrário, use os dados já carregados
         else {
-            setupRecyclerViewPopulares(homeViewModel.popularList.value!!)
-            setupRecyclerViewTopRated(homeViewModel.topRatedList.value!!)
-            setupRecyclerViewNowPlaying(homeViewModel.nowPlayingList.value!!)
-            setupRecyclerViewUpcoming(homeViewModel.upcomingList.value!!)
+            setupRecycler(binding.recyclerPopular, homeViewModel.popularList.value!!)
+            setupRecycler(binding.recyclerTopRated, homeViewModel.topRatedList.value!!)
+            setupRecycler(binding.recyclerNowPlaying, homeViewModel.nowPlayingList.value!!)
+            setupRecycler(binding.recyclerNowPlaying, homeViewModel.upcomingList.value!!)
         }
 
-        
+
         // Observa alterações nos dados e atualiza a interface do usuário quando necessário
 
         homeViewModel.popularList.observe(viewLifecycleOwner, Observer { movies ->
-            setupRecyclerViewPopulares(movies)
+            setupRecycler(binding.recyclerPopular, movies)
         })
 
         homeViewModel.topRatedList.observe(viewLifecycleOwner, Observer { movies ->
-            setupRecyclerViewTopRated(movies)
+            setupRecycler(binding.recyclerTopRated, movies)
         })
 
         homeViewModel.nowPlayingList.observe(viewLifecycleOwner, Observer { movies ->
-            setupRecyclerViewNowPlaying(movies)
+            setupRecycler(binding.recyclerNowPlaying,movies)
         })
 
         homeViewModel.upcomingList.observe(viewLifecycleOwner, Observer { movies ->
-            setupRecyclerViewUpcoming(movies)
+            setupRecycler(binding.recyclerUpcoming, movies)
         })
 
 
@@ -173,32 +173,10 @@ class HomeFragment : Fragment() {
 
     }
 
-    private fun setupRecyclerViewPopulares(popularMovies: List<Movie>) {
-        val recyclerPopular: RecyclerView = binding.recyclerPopular
-        recyclerPopular.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-        itemAdapter = ItemAdapter(popularMovies)
-        recyclerPopular.adapter = itemAdapter
-    }
-
-    private fun setupRecyclerViewTopRated(movies: List<Movie>) {
-        val recyclerTopRated: RecyclerView = binding.recyclerTopRated
-        recyclerTopRated.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+    private fun setupRecycler (recycler: RecyclerView, movies: List<Movie>) {
+        recycler.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         itemAdapter = ItemAdapter(movies)
-        recyclerTopRated.adapter = itemAdapter
-    }
-
-    private fun setupRecyclerViewNowPlaying(movies: List<Movie>) {
-        val recyclerNowPlaying: RecyclerView = binding.recyclerNowPlaying
-        recyclerNowPlaying.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-        itemAdapter = ItemAdapter(movies)
-        recyclerNowPlaying.adapter = itemAdapter
-    }
-
-    private fun setupRecyclerViewUpcoming(movies: List<Movie>) {
-        val recyclerUpcoming: RecyclerView = binding.recyclerUpcoming
-        recyclerUpcoming.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-        itemAdapter = ItemAdapter(movies)
-        recyclerUpcoming.adapter = itemAdapter
+        recycler.adapter = itemAdapter
     }
 
     override fun onDestroyView() {
