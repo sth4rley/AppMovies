@@ -34,4 +34,12 @@ interface TmdbApiService {
         @Header("Authorization") apiKey: String
     ): Call<MovieResponse>
 
+    // pesquisa de filmes
+    @GET("search/movie")
+    fun searchMovies(
+        @Query("query") query: String,
+        @Query("page") page: Int,
+        @Header("Authorization") apiKey: String
+    ): Call<MovieResponse>
+
 }

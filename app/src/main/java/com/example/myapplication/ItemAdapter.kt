@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.myapplication.api.Movie
@@ -24,11 +23,12 @@ class ItemAdapter (private val items: List<Movie>) : RecyclerView.Adapter<ItemAd
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         Glide.with(holder.itemView.context)
             .load("https://image.tmdb.org/t/p/w342/" + items[position].poster_path)
-            .placeholder(R.drawable.loading)  // Imagem de placeholder enquanto a imagem está sendo carregada
+            .placeholder(R.drawable.ic_home_black_24dp)  // Imagem de placeholder enquanto a imagem está sendo carregada
             .into(holder.moviePoster)
     }
 
     override fun getItemCount(): Int {
         return items.size
     }
+
 }
