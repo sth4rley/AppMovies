@@ -1,5 +1,7 @@
 package com.example.myapplication.api
 
+import java.io.Serializable
+
 
 data class MovieResponse(
     val page: Int,
@@ -23,4 +25,4 @@ data class Movie(
     val original_language: String,
     val original_title: String,
     val genre_ids: List<Int>
-)
+) : Serializable

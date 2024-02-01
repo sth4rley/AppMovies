@@ -3,6 +3,7 @@ package com.example.myapplication
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -10,6 +11,7 @@ import com.example.myapplication.api.Movie
 
 
 class ItemAdapter (private val items: List<Movie>) : RecyclerView.Adapter<ItemAdapter.ViewHolder>() {
+
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val moviePoster: ImageView = itemView.findViewById(R.id.imageView)
@@ -24,11 +26,28 @@ class ItemAdapter (private val items: List<Movie>) : RecyclerView.Adapter<ItemAd
         Glide.with(holder.itemView.context)
             .load("https://image.tmdb.org/t/p/w342/" + items[position].poster_path)
             .placeholder(R.drawable.ic_home_black_24dp)  // Imagem de placeholder enquanto a imagem está sendo carregada
+            .centerCrop()
             .into(holder.moviePoster)
+
+        val currentItem = items[position]
+
+        holder.itemView.setOnClickListener {
+            onItemClickListener?.onItemClick(currentItem)
+        }
     }
 
     override fun getItemCount(): Int {
         return items.size
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(movie: Movie)
+    }
+
+    private var onItemClickListener: OnItemClickListener? = null
+
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        this.onItemClickListener = listener
     }
 
 }
