@@ -12,12 +12,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.BuildConfig
-import com.example.myapplication.ItemAdapter
-import com.example.myapplication.MovieDetailsActivity
-import com.example.myapplication.api.Movie
+import com.example.myapplication.ui.ItemAdapter
+import com.example.myapplication.ui.MovieDetailsActivity
 import com.example.myapplication.api.MovieResponse
 import com.example.myapplication.api.TmdbApiService
 import com.example.myapplication.databinding.FragmentHomeBinding
+import com.example.myapplication.entities.Movie
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -59,23 +59,25 @@ class HomeFragment : Fragment() {
         }
 
 
+
         // Observa alterações nos dados e atualiza a interface do usuário quando necessário
 
-        homeViewModel.popularList.observe(viewLifecycleOwner, Observer { movies ->
+        homeViewModel.popularList.observe(viewLifecycleOwner, Observer { movies: List<Movie> ->
             setupRecycler(binding.recyclerPopular, movies)
         })
 
-        homeViewModel.topRatedList.observe(viewLifecycleOwner, Observer { movies ->
+        homeViewModel.topRatedList.observe(viewLifecycleOwner, Observer { movies: List<Movie> ->
             setupRecycler(binding.recyclerTopRated, movies)
         })
 
-        homeViewModel.nowPlayingList.observe(viewLifecycleOwner, Observer { movies ->
+        homeViewModel.nowPlayingList.observe(viewLifecycleOwner, Observer { movies: List<Movie> ->
             setupRecycler(binding.recyclerNowPlaying,movies)
         })
 
-        homeViewModel.upcomingList.observe(viewLifecycleOwner, Observer { movies ->
+        homeViewModel.upcomingList.observe(viewLifecycleOwner, Observer { movies: List<Movie> ->
             setupRecycler(binding.recyclerUpcoming, movies)
         })
+
 
 
         return root
@@ -94,7 +96,6 @@ class HomeFragment : Fragment() {
         call.enqueue(object : Callback<MovieResponse> {
             override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
                 if (response.isSuccessful) {
-
                     val movies = response.body()?.results
                     // Atualiza os dados no ViewModel
                     homeViewModel.setPopularMovies(movies!!)
@@ -115,7 +116,6 @@ class HomeFragment : Fragment() {
         callTopRated.enqueue(object : Callback<MovieResponse> {
             override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
                 if (response.isSuccessful) {
-
                     val movies = response.body()?.results
                     // Atualiza os dados no ViewModel
                     homeViewModel.setTopRatedMovies(movies!!)
@@ -136,7 +136,6 @@ class HomeFragment : Fragment() {
         callNowPlaying.enqueue(object : Callback<MovieResponse> {
             override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
                 if (response.isSuccessful) {
-
                     val movies = response.body()?.results
                     // Atualiza os dados no ViewModel
                     homeViewModel.setNowPlayingMovies(movies!!)
@@ -173,7 +172,6 @@ class HomeFragment : Fragment() {
             override fun onFailure(call: Call<MovieResponse>, t: Throwable) { }
         })
 
-
     }
 
     private fun setupRecycler (recycler: RecyclerView, movies: List<Movie>) {
@@ -184,14 +182,16 @@ class HomeFragment : Fragment() {
         itemAdapter.setOnItemClickListener(object : ItemAdapter.OnItemClickListener {
             override fun onItemClick(movie: Movie) {
                 Toast.makeText(activity, "Clicou em ${movie.title}", Toast.LENGTH_SHORT).show()
-                abrirDetalhesFilme(movie)
+                openMovieDetails(movie)
             }
         })
+
+
     }
 
-    fun abrirDetalhesFilme(movie: Movie?) {
+    fun openMovieDetails(movie: Movie?) {
         val bundle = Bundle()
-        bundle.putSerializable("filme", movie)
+        bundle.putSerializable("movie", movie)
         val intent = Intent(activity, MovieDetailsActivity::class.java)
         intent.putExtras(bundle)
         startActivity(intent)
