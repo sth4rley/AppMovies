@@ -12,8 +12,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.BuildConfig
+import com.example.myapplication.MovieDetailsActivity
 import com.example.myapplication.ui.ItemAdapter
-import com.example.myapplication.ui.MovieDetailsActivity
 import com.example.myapplication.api.MovieResponse
 import com.example.myapplication.api.TmdbApiService
 import com.example.myapplication.databinding.FragmentHomeBinding
