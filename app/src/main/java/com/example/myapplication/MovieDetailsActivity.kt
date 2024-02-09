@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.example.myapplication.entities.Movie
@@ -19,6 +20,7 @@ class MovieDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_details)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
 
         val movie = intent.getSerializableExtra("movie") as Movie
 
@@ -53,8 +55,6 @@ class MovieDetailsActivity : AppCompatActivity() {
                 toggleWatchedStatus(movie)
             }
         }
-
-
 
 
 

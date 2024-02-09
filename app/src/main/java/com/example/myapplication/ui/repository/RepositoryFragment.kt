@@ -6,44 +6,75 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.ui.ItemAdapter
 import com.example.myapplication.MovieDetailsActivity
-import com.example.myapplication.databinding.FragmentNotificationsBinding
+import com.example.myapplication.databinding.FragmentRepositoryBinding
 import com.example.myapplication.entities.Movie
-import com.example.myapplication.entities.Repo
 import kotlinx.coroutines.launch
 
 class RepositoryFragment : Fragment() {
 
-    private var _binding: FragmentNotificationsBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+    private var _binding: FragmentRepositoryBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var itemAdapter: ItemAdapter
+    private lateinit var repositoryViewModel: RepositoryViewModel
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
 
 
-        _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
+        _binding = FragmentRepositoryBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val recycler_favorites = binding.recyclerFavorites
-        recycler_favorites.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        repositoryViewModel = ViewModelProvider(this).get(RepositoryViewModel::class.java)
 
-        val recycler_watchlist = binding.recyclerWatchLater
-        recycler_watchlist.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 
-        val recycler_watched = binding.recyclerWatched
-        recycler_watched.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        // Favoritos
+        val recyclerFavorites: RecyclerView = binding.recyclerFavorites
+        recyclerFavorites.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        repositoryViewModel.favoritesList.observe(viewLifecycleOwner, Observer {
+            val favoritesAdapter = ItemAdapter(it)
+            recyclerFavorites.adapter = favoritesAdapter
+            favoritesAdapter.setOnItemClickListener(object : ItemAdapter.OnItemClickListener {
+                override fun onItemClick(movie: Movie) {
+                    openMovieDetails(movie)
+                }
+            })
+        })
+
+        // Assistir depois
+        val recyclerWatchlist: RecyclerView = binding.recyclerWatchLater
+        recyclerWatchlist.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        repositoryViewModel.watchLaterList.observe(viewLifecycleOwner, Observer {
+            val watchLaterAdapter = ItemAdapter(it)
+            recyclerWatchlist.adapter = watchLaterAdapter
+            watchLaterAdapter.setOnItemClickListener(object : ItemAdapter.OnItemClickListener {
+                override fun onItemClick(movie: Movie) {
+                    openMovieDetails(movie)
+                }
+            })
+        })
+
+        // Assistidos
+        val recyclerWatched: RecyclerView = binding.recyclerWatched
+        recyclerWatched.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        repositoryViewModel.watchedList.observe(viewLifecycleOwner, Observer {
+            val watchedAdapter = ItemAdapter(it)
+            recyclerWatched.adapter = watchedAdapter
+            watchedAdapter.setOnItemClickListener(object : ItemAdapter.OnItemClickListener {
+                override fun onItemClick(movie: Movie) {
+                    openMovieDetails(movie)
+                }
+            })
+        })
 
 
         return root
@@ -52,32 +83,16 @@ class RepositoryFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        val repo = Repo(requireContext())
         lifecycleScope.launch {
-            setupRecycler(binding.recyclerFavorites,repo.getFavorites())
-            setupRecycler(binding.recyclerWatchLater,repo.getWatchList())
-            setupRecycler(binding.recyclerWatched,repo.getWatched())
+            repositoryViewModel.syncData(requireContext())
         }
     }
 
-    fun openMovieDetails(movie: Movie?) {
-        val bundle = Bundle()
-        bundle.putSerializable("movie", movie)
-        val intent = Intent(activity, MovieDetailsActivity::class.java)
-        intent.putExtras(bundle)
+    private fun openMovieDetails(movie: Movie) {
+        val intent = Intent(activity, MovieDetailsActivity::class.java).apply {
+            putExtra("movie", movie)
+        }
         startActivity(intent)
-    }
-
-    private fun setupRecycler (recycler: RecyclerView, movies: List<Movie>) {
-        recycler.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-        itemAdapter = ItemAdapter(movies)
-        recycler.adapter = itemAdapter
-
-        itemAdapter.setOnItemClickListener(object : ItemAdapter.OnItemClickListener {
-            override fun onItemClick(movie: Movie) {
-                openMovieDetails(movie)
-            }
-        })
     }
 
     override fun onDestroyView() {

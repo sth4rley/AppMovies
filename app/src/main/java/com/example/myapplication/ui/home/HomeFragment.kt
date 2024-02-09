@@ -40,6 +40,7 @@ class HomeFragment : Fragment() {
     ): View {
 
 
+
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
@@ -47,7 +48,6 @@ class HomeFragment : Fragment() {
 
         // caso a lista de filmes ainda não tenha sido carregada, chame a API
         if (homeViewModel.popularList.value == null || homeViewModel.topRatedList.value == null || homeViewModel.nowPlayingList.value == null || homeViewModel.upcomingList.value == null) {
-            println("chamando a API")
             loadDataFromApi()
         }
         // caso contrário, use os dados já carregados
@@ -62,6 +62,7 @@ class HomeFragment : Fragment() {
 
         // Observa alterações nos dados e atualiza a interface do usuário quando necessário
 
+        // sempre que a lista de filmes populares for atualizada, atualize o recycler view
         homeViewModel.popularList.observe(viewLifecycleOwner, Observer { movies: List<Movie> ->
             setupRecycler(binding.recyclerPopular, movies)
         })
@@ -79,9 +80,9 @@ class HomeFragment : Fragment() {
         })
 
 
-
         return root
     }
+
 
     private fun loadDataFromApi() {
         val retrofit = Retrofit.Builder()
@@ -189,11 +190,10 @@ class HomeFragment : Fragment() {
 
     }
 
-    fun openMovieDetails(movie: Movie?) {
-        val bundle = Bundle()
-        bundle.putSerializable("movie", movie)
-        val intent = Intent(activity, MovieDetailsActivity::class.java)
-        intent.putExtras(bundle)
+    private fun openMovieDetails(movie: Movie) {
+        val intent = Intent(activity, MovieDetailsActivity::class.java).apply {
+            putExtra("movie", movie)
+        }
         startActivity(intent)
     }
 

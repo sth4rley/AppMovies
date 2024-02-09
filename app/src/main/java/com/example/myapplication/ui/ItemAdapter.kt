@@ -11,7 +11,7 @@ import com.example.myapplication.R
 import com.example.myapplication.entities.Movie
 
 
-class ItemAdapter (private val items: List<Movie>) : RecyclerView.Adapter<ItemAdapter.ViewHolder>() {
+class ItemAdapter (private var items: List<Movie>) : RecyclerView.Adapter<ItemAdapter.ViewHolder>() {
 
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -37,6 +37,11 @@ class ItemAdapter (private val items: List<Movie>) : RecyclerView.Adapter<ItemAd
 
     }
 
+    fun updateData(newMovies: List<Movie>) {
+        items = newMovies
+        notifyDataSetChanged()
+    }
+
     override fun getItemCount(): Int {
         return items.size
     }
@@ -51,6 +56,7 @@ class ItemAdapter (private val items: List<Movie>) : RecyclerView.Adapter<ItemAd
     fun setOnItemClickListener(listener: OnItemClickListener) {
         this.onItemClickListener = listener
     }
+
 
 
 }
