@@ -89,6 +89,8 @@ dependencies {
     implementation("androidx.room:room-ktx:$room_version")
 
 
+    implementation ("com.github.st235:expandablebottombar:1.5.3")
+
     kapt("androidx.room:room-compiler:$room_version")
 
 

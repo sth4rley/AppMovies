@@ -92,6 +92,8 @@ class HomeFragment : Fragment() {
 
         val tmdbApiService = retrofit.create(TmdbApiService::class.java)
 
+        println("Chamando API")
+
         // filmes populares
         val call = tmdbApiService.getPopularMovies(1,BuildConfig.API_KEY)
         call.enqueue(object : Callback<MovieResponse> {
@@ -182,7 +184,6 @@ class HomeFragment : Fragment() {
 
         itemAdapter.setOnItemClickListener(object : ItemAdapter.OnItemClickListener {
             override fun onItemClick(movie: Movie) {
-                Toast.makeText(activity, "Clicou em ${movie.title}", Toast.LENGTH_SHORT).show()
                 openMovieDetails(movie)
             }
         })

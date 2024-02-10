@@ -1,10 +1,11 @@
 package com.example.myapplication.entities
 
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 import java.io.Serializable
 
-@Entity(tableName = "movies")
+@Entity(tableName = "movies", indices = [Index(value = ["favorite"]), Index(value = ["watchlist"]), Index(value = ["watched"])])
 data class Movie(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
@@ -23,5 +24,5 @@ data class Movie(
     var favorite: Boolean,
     var watchlist: Boolean,
     var watched: Boolean,
-    //val genre_ids: List<Int>
+    //var genre_ids: List<Int>
 ) : Serializable

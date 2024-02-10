@@ -42,6 +42,8 @@ class SearchResultsActivity : AppCompatActivity() {
             override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
                 if (response.isSuccessful) {
 
+                    println("A chamada foi bem sucedida")
+
                     var movies = response.body()?.results?.sortedByDescending { it.popularity }
 
                     val recyclerView = findViewById<RecyclerView>(R.id.recycler_search)
