@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/cordovan</item> <!-- This is the color of the top app bar. -->
         <item name="colorPrimaryVariant">@color/wine</item> <!-- This is the color of the bottom navigation bar. -->

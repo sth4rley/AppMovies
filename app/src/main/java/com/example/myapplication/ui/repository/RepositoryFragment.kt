@@ -11,8 +11,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.ui.ItemAdapter
-import com.example.myapplication.MovieDetailsActivity
+import com.example.myapplication.ui.adapter.ItemAdapter
+import com.example.myapplication.ui.MovieDetailsActivity
 import com.example.myapplication.databinding.FragmentRepositoryBinding
 import com.example.myapplication.entities.Movie
 import kotlinx.coroutines.launch

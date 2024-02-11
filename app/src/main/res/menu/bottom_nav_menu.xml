@@ -12,13 +12,12 @@
 
     <item
         android:id="@+id/placeholder"
-        android:title=""
-        />
+        android:title="" />
 
 
     <item
         android:id="@+id/navigation_notifications"
-        android:icon="@drawable/movie_recorder_svgrepo_com"
+        android:icon="@drawable/movie_recorder"
         android:title="Meus Filmes"
         app:exb_color="#FF8888"/>
 
