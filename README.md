@@ -1,7 +1,7 @@
 <h1 align="center">
   <br>
 
-<img src="readme-assets/logo.png" alt="MovieRack" width="300">
+<a href="https://github.com/sth4rley/MovieRack"> <img src="readme-assets/logo.png" alt="MovieRack" width="300"> </a>
 
 </h1>
 
