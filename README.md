@@ -7,16 +7,15 @@
 
 <h4 align="center">MovieRack é um app simples que serve como uma agenda de filmes.</h4>
 
+## Imagens do App
 
 <p align="center">
-    <img src="readme-assets/1.png" width="250" style="margin-right: 10px;" />
-    <img src="readme-assets/3.png" width="250"/>
+    <img src="readme-assets/1.png" width="200" style="margin-right: 10px;" />
+    <img src="readme-assets/3.png" width="200"/>
+    <img src="readme-assets/4.png" width="200" style="margin-right: 10px;" />
+    <img src="readme-assets/2.png" width="200" />
 </p>
+<h4 align="center">Os usuários podem pesquisar e salvar seus filmes favoritos, além de marcá-los como assistidos ou para assistir mais tarde.</h4>
 
-<h4 align="center">Nele os usuários podem pesquisar e salvar seus filmes favoritos, marcá-los como assistidos ou para assistir mais tarde.</h4>
-<p align="center">
-    <img src="readme-assets/4.png" width="250" style="margin-right: 10px;" />
-    <img src="readme-assets/2.png" width="250" />
-</p>
 
 
