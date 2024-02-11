@@ -1,9 +1,8 @@
-package com.example.myapplication.ui
+package com.example.myapplication.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -19,7 +18,7 @@ class ItemAdapter (private var items: List<Movie>) : RecyclerView.Adapter<ItemAd
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_list, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.movie_list, parent, false)
         return ViewHolder(view)
     }
 
@@ -35,11 +34,6 @@ class ItemAdapter (private var items: List<Movie>) : RecyclerView.Adapter<ItemAd
             onItemClickListener?.onItemClick(currentItem)
         }
 
-    }
-
-    fun updateData(newMovies: List<Movie>) {
-        items = newMovies
-        notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int {

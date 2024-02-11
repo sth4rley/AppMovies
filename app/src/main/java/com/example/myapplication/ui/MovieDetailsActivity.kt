@@ -1,13 +1,16 @@
-package com.example.myapplication
+package com.example.myapplication.ui
 
+import android.graphics.text.LineBreaker
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.lifecycle.ViewModelProvider
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
+import com.example.myapplication.R
 import com.example.myapplication.entities.Movie
 import com.example.myapplication.entities.Repo
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -23,6 +26,8 @@ class MovieDetailsActivity : AppCompatActivity() {
 
 
         val movie = intent.getSerializableExtra("movie") as Movie
+
+        title = movie.title
 
         setupData(movie)
 
@@ -60,12 +65,18 @@ class MovieDetailsActivity : AppCompatActivity() {
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun setupData(movie: Movie) {
         val imageView = findViewById<ImageView>(R.id.movieImageView)
         val titleView = findViewById<TextView>(R.id.titleTextView)
+        val releaseView = findViewById<TextView>(R.id.releaseTextView)
+        val overViewView = findViewById<TextView>(R.id.overviewTextView)
 
-        title = movie.title
         titleView.text = movie.title
+        releaseView.text = "Release date: ${movie.release_date}"
+        overViewView.text = movie.overview
+
+        overViewView.justificationMode = LineBreaker.JUSTIFICATION_MODE_INTER_WORD
 
         Glide.with(this)
             .load("https://image.tmdb.org/t/p/w500${movie.poster_path}")

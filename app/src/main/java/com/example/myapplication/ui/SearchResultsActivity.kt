@@ -1,6 +1,5 @@
 package com.example.myapplication.ui
 
-import com.example.myapplication.MovieDetailsActivity
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
@@ -12,6 +11,7 @@ import com.example.myapplication.R
 import com.example.myapplication.api.MovieResponse
 import com.example.myapplication.api.TmdbApiService
 import com.example.myapplication.entities.Movie
+import com.example.myapplication.ui.adapter.ItemAdapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

@@ -3,16 +3,10 @@
 
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EDEDE8"
-    android:paddingTop="0dp">
-
-
-    <!-- android:paddingTop="?attr/actionBarSize"> -->
-
+    android:background="#EEEEE8">
 
     <fragment
         android:id="@+id/nav_host_fragment_activity_main"
@@ -29,7 +23,6 @@
         android:layout_gravity="bottom"
         app:backgroundTint="@color/baby_powder"
         app:fabCradleMargin="10dp"
-
         app:fabCradleRoundedCornerRadius="10dp"
         app:fabCradleVerticalOffset="10dp">
 
@@ -46,7 +39,6 @@
             app:menu="@menu/bottom_nav_menu" />
 
 
-
     </com.google.android.material.bottomappbar.BottomAppBar>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -58,8 +50,6 @@
         app:borderWidth="2dp"
         app:layout_anchor="@id/bottom_app_bar"
         app:srcCompat="@drawable/search" />
-
-
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

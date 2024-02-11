@@ -17,6 +17,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import github.com.st235.lib_expandablebottombar.ExpandableBottomBar
 import github.com.st235.lib_expandablebottombar.MenuItem
 import github.com.st235.lib_expandablebottombar.navigation.ExpandableBottomBarNavigationUI
@@ -35,34 +36,25 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // val navView: BottomNavigationView = binding.navView
         bottomBar = findViewById(R.id.nav_view)
 
         println("OnCreate MainActivity")
 
-
-        // val navController = findNavController(R.id.nav_host_fragment_activity_main)
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
 
-        // val appBarConfiguration = AppBarConfiguration(setOf(
-        //                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications))
         val appBarConfiguration = AppBarConfiguration(setOf(
-            R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
+            R.id.navigation_home, R.id.navigation_home, R.id.navigation_notifications
         ))
 
-        //  setupActionBarWithNavController(navController, appBarConfiguration)
-        //setupActionBarWithNavController(navController, appBarConfiguration)
+        setupActionBarWithNavController(navController, appBarConfiguration)
         
         bottomBar.setupWithNavController(navController)
-        //BottomNavigationView.setupWithNavController(navController)
 
+        val fab: FloatingActionButton = findViewById(R.id.search_fab)
 
-
-        //val fab: FloatingActionButton = findViewById(R.id.search_fab)
-
-        //fab.setOnClickListener {
-        //    searchMovieDialog()
-        //}
+        fab.setOnClickListener {
+            searchMovieDialog()
+        }
 
     }
 

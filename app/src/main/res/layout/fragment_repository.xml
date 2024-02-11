@@ -16,60 +16,65 @@
         android:fillViewport="true"
         >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Favorites"
-            android:textSize="20sp" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="3dp"
+            >
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_favorites"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Favoritos"
+                android:textSize="22sp"
+                android:layout_marginTop="5dp"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Watch Later"
-            android:textSize="20sp" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_favorites"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginBottom="5dp"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_watch_later"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recycler_favoritos" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Assistir Depois"
+                android:textSize="22sp"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Watched"
-            android:textSize="20sp" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_watch_later"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recycler_favorites"
+                android:layout_marginBottom="5dp"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_watched"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recycler_watch_later" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Assistidos"
+                android:textSize="22sp" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="60dp" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_watched"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recycler_watch_later"
+                android:layout_marginBottom="5dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="60dp" />
 
 
-    </LinearLayout>
-</ScrollView>
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
