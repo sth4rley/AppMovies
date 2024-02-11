@@ -15,7 +15,7 @@
     <img src="readme-assets/4.png" width="200" style="margin-right: 10px;" />
     <img src="readme-assets/2.png" width="200" />
 </p>
-<h4 align="center">Os usuários podem pesquisar e salvar seus filmes favoritos, além de marcá-los como assistidos ou para assistir mais tarde.</h4>
+<h5 align="center">Os usuários podem pesquisar e salvar seus filmes favoritos, além de marcá-los como assistidos ou para assistir mais tarde.</h5>
 
 
 
