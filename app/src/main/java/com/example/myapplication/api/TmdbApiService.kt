@@ -7,8 +7,10 @@ import retrofit2.http.Query
 
 interface TmdbApiService {
     // filmes populares
+
     @GET("movie/popular")
     fun getPopularMovies(
+        @Query("language") language: String = "pt-BR",
         @Query("page") page: Int,
         @Header("Authorization") apiKey: String
     ): Call<MovieResponse>
@@ -16,6 +18,7 @@ interface TmdbApiService {
     // filmes mais bem avaliados
     @GET("movie/top_rated")
     fun getTopRatedMovies(
+        @Query("language") language: String = "pt-BR",
         @Query("page") page: Int,
         @Header("Authorization") apiKey: String
     ): Call<MovieResponse>
@@ -23,6 +26,7 @@ interface TmdbApiService {
     // filmes em cartaz
     @GET("movie/now_playing")
     fun getNowPlayingMovies(
+        @Query("language") language: String = "pt-BR",
         @Query("page") page: Int,
         @Header("Authorization") apiKey: String
     ): Call<MovieResponse>
@@ -30,6 +34,7 @@ interface TmdbApiService {
     // filmes que serão lançados
     @GET("movie/upcoming")
     fun getUpcomingMovies(
+        @Query("language") language: String = "pt-BR",
         @Query("page") page: Int,
         @Header("Authorization") apiKey: String
     ): Call<MovieResponse>
@@ -37,6 +42,7 @@ interface TmdbApiService {
     // pesquisa de filmes
     @GET("search/movie")
     fun searchMovies(
+        @Query("language") language: String = "pt-BR",
         @Query("query") query: String,
         @Query("page") page: Int,
         @Header("Authorization") apiKey: String

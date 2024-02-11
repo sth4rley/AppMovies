@@ -91,10 +91,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_weight="1"
-            android:background="@color/cordovan"
             android:clickable="true"
             android:minWidth="10dp"
-            app:backgroundTint="@color/cordovan"
             app:srcCompat="@drawable/eye" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -102,10 +100,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:background="@color/cordovan"
             android:clickable="true"
             android:minWidth="10dp"
-            app:backgroundTint="@color/cordovan"
             app:srcCompat="@drawable/favorite" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -114,10 +110,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_weight="1"
-            android:background="@color/cordovan"
             android:clickable="true"
             android:minWidth="10dp"
-            app:backgroundTint="@color/cordovan"
             app:srcCompat="@drawable/clock" />
     </LinearLayout>
 

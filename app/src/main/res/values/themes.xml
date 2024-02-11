@@ -1,24 +1,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/cordovan</item> <!-- This is the color of the top app bar. -->
-        <item name="colorPrimaryVariant">@color/wine</item> <!-- This is the color of the bottom navigation bar. -->
-        <item name="colorOnPrimary">@color/baby_powder</item> <!-- This is the text color on the primary color. -->
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/baby_powder</item> <!-- This is the color of the bottom navigation bar. -->
-        <item name="colorSecondaryVariant">@color/charcoal</item> <!-- This is the color of the bottom navigation bar. -->
-        <item name="colorOnSecondary">@color/baby_powder</item> <!-- This is the text color on the secondary color. -->
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <item name="android:textColorPrimary">@color/black</item>
-        <!-- Define um tema específico para a ActionBar -->
-        <item name="actionBarTheme">@style/ActionBarTheme</item>
+    <style name="AppTheme" parent="Theme.Material3.Dark">
+
+        <!-- statusbar color -->
+        <item name="android:statusBarColor">#2a2831</item>
     </style>
 
-    <!-- Estilo específico para a ActionBar -->
-    <style name="ActionBarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
-        <!-- Cor do texto na ActionBar -->
-        <item name="android:textColor">@color/baby_powder</item>
-    </style>
 </resources>

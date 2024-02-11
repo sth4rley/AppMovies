@@ -37,7 +37,7 @@ class SearchResultsActivity : AppCompatActivity() {
 
         val tmdbApiService = retrofit.create(TmdbApiService::class.java)
 
-        val call = tmdbApiService.searchMovies(nomeFilme!!, 1, BuildConfig.API_KEY)
+        val call = tmdbApiService.searchMovies("pt-BR",nomeFilme!!, 1, BuildConfig.API_KEY)
         call.enqueue(object : Callback<MovieResponse> {
             override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
                 if (response.isSuccessful) {

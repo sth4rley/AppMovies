@@ -27,7 +27,7 @@ class HomeViewModel : ViewModel() {
     val upcomingList: LiveData<List<Movie>> get() = _upcomingList
 
     fun syncPopularMovies(tmdbApiService: TmdbApiService) {
-        val call = tmdbApiService.getPopularMovies(1, BuildConfig.API_KEY)
+        val call = tmdbApiService.getPopularMovies("pt-BR",1, BuildConfig.API_KEY)
         call.enqueue(object : Callback<MovieResponse> {
             override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
                 if (response.isSuccessful) {
@@ -43,7 +43,7 @@ class HomeViewModel : ViewModel() {
     }
 
     fun syncTopRatedMovies(tmdbApiService: TmdbApiService) {
-        val call = tmdbApiService.getTopRatedMovies(1, BuildConfig.API_KEY)
+        val call = tmdbApiService.getTopRatedMovies("pt-BR" ,1, BuildConfig.API_KEY)
         call.enqueue(object : Callback<MovieResponse> {
             override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
                 if (response.isSuccessful) {
@@ -59,7 +59,7 @@ class HomeViewModel : ViewModel() {
     }
 
     fun syncNowPlayingMovies(tmdbApiService: TmdbApiService) {
-        val call = tmdbApiService.getNowPlayingMovies(1, BuildConfig.API_KEY)
+        val call = tmdbApiService.getNowPlayingMovies("pt-BR",1, BuildConfig.API_KEY)
         call.enqueue(object : Callback<MovieResponse> {
             override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
                 if (response.isSuccessful) {
@@ -75,7 +75,7 @@ class HomeViewModel : ViewModel() {
     }
 
     fun syncUpcomingMovies(tmdbApiService: TmdbApiService) {
-        val call = tmdbApiService.getUpcomingMovies(1, BuildConfig.API_KEY)
+        val call = tmdbApiService.getUpcomingMovies("pt-BR",1, BuildConfig.API_KEY)
         call.enqueue(object : Callback<MovieResponse> {
             override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
                 if (response.isSuccessful) {

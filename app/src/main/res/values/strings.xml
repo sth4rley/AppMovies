@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">MovieRack</string>
     <string name="title_home">Início</string>
-    <string name="title_dashboard">Estatísticas</string>
     <string name="title_repository">Meus Filmes</string>
 </resources>

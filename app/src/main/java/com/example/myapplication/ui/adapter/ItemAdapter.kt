@@ -6,8 +6,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.myapplication.R
 import com.example.myapplication.entities.Movie
+
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 
 
 class ItemAdapter (private var items: List<Movie>) : RecyclerView.Adapter<ItemAdapter.ViewHolder>() {
@@ -26,6 +29,8 @@ class ItemAdapter (private var items: List<Movie>) : RecyclerView.Adapter<ItemAd
         Glide.with(holder.itemView.context)
             .load("https://image.tmdb.org/t/p/w342/" + items[position].poster_path)
             .centerCrop()
+            .placeholder(R.drawable.placeholder)
+            .apply(RequestOptions.bitmapTransform(RoundedCorners(24)))
             .into(holder.moviePoster)
 
         val currentItem = items[position]
