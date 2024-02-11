@@ -1,7 +1,7 @@
 <h1 align="center">
   <br>
 
-    <img src="readme-assets/logo.png" alt="Markdownify" width="300">
+<img src="readme-assets/logo.png" alt="MovieRack" width="300">
 
 </h1>
 
